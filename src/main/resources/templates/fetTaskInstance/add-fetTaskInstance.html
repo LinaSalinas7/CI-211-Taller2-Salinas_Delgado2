@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Add Task Instance</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="../css/shards.min.css">
+</head>
+<body>
+	<div class="container my-5">
+		<h2 class="mb-5">Add Fet Task Instance</h2>
+		<div class="row">
+			<div class="col-md-6">
+				<form action="#" th:action="@{/taskInstance/add-taskInstance/}"
+					th:object="${taskInstance}" method="post">
+					<div class="row">
+						<div class="form-group col-md-6">
+						
+							<label for="taskinsId" class="col-form-label">Task
+								Instance Id</label> 
+								<input th:field="*{taskinsId}" class="form-control"
+								id="taskinsId" placeholder="task InstanceId"> <span
+								th:if="${#fields.hasErrors('taskinsId')}"
+								th:errors="*{taskinsId}" class="text-danger"></span>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="taskinsExecutiondate" class="col-form-label">Execution
+								Date</label> <input th:field="*{taskinsExecutiondate}"
+								class="form-control" id="taskinsExecutiondate"
+								placeholder="taskinsExecutiondate"> <span
+								th:if="${#fields.hasErrors('taskinsExecutiondate')}"
+								th:errors="*{taskinsExecutiondate}" class="text-danger"></span>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="taskinsTargettype" class="col-form-label">Target
+								Type</label> <input th:field="*{taskinsTargettype}" class="form-control"
+								id="taskinsTargettype" placeholder="taskinsTargettype">
+							<span th:if="${#fields.hasErrors('taskinsTargettype')}"
+								th:errors="*{taskinsTargettype}" class="text-danger"></span>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="taskinsTargetvalue" class="col-form-label">Target
+								Value</label> <input th:field="*{taskinsTargetvalue}"
+								class="form-control" id="taskinsTargetvalue"
+								placeholder="taskinsTargetvalue"> <span
+								th:if="${#fields.hasErrors('taskinsTargetvalue')}"
+								th:errors="*{taskinsTargetvalue}" class="text-danger"></span>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="task" class="col-form-label">Task</label> 
+							<select
+								th:field="*{task.taskId}" class="form-control" id="task">
+								<option th:each="task : ${tasks}" 
+								th:value="${task.taskId}" th:text="${task.taskId}" />
+							</select> 
+
+						</div>
+
+
+						<div></div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 mt-3">
+							<input type="submit" name="action" class="btn btn-primary"
+								value="Add task instance">
+						</div>
+						<div class="col-md-3 mt-3">
+							<input type="reset" class="btn btn-secondary" value="Clear">
+						</div>
+
+						<div class="col-md-3 mt-3">
+							<input type="submit" name="action" class="btn btn-secondary"
+								value="Cancel">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
